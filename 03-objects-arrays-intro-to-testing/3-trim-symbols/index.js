@@ -5,5 +5,13 @@
  * @returns {string} - the new string without extra symbols according passed size
  */
 export function trimSymbols(string, size) {
+  const newString = string.slice(0, size);
+  const rest = [...string.slice(size)];
 
+  return rest.reduce((answer, current) => {
+    if (!answer.endsWith(current.repeat(size))) {
+      answer += current;
+    }
+    return answer;
+  }, newString);
 }
